@@ -8,7 +8,9 @@ int miss(void);
 int main(void)
 {
 	int u;
-	char input; 
+	char input;
+	srand((unsigned)time(NULL));
+	
 	printf("请输入你的按键来验证是否按键正常：(q结束验证)\n");
     while(scanf("%c",&input)==1)
     {
@@ -26,7 +28,7 @@ int main(void)
 		
 	  int a[52],b[52],c[52];
 	  int i;
-	  srand((unsigned)time(NULL));
+	  
 	
 	  for(i=0;i<=51;i++)
 	  {
@@ -67,8 +69,7 @@ int main(void)
       int m,n;
 	  int r1,r2,w;
 	  int s1,s2;
-	  int z;
-	  m=n=z=w=0;
+	  m=n=w=0;
         while(m<=21&&n<=21)
 		{ 
            i=rand()%(52-w);
@@ -93,17 +94,12 @@ int main(void)
 	  		  }
 	       }
 	       
-	       if(s1==2)
-	       {
-	   	    z++;
-	       }
 	       printf("甲方的总数值是：%d\n",m);
 	       
 	       if(m>21)
 	       {
 	   	     break;
 	       } 
-		   
 		   
 		    
            i=rand()%(52-w);
@@ -127,17 +123,14 @@ int main(void)
 	  			  c[i]=c[i+1];
 	  		  }
 	       }
-	       if(s2==2)
-	       {
-	   	    z++;
-	       }
+	       
 	       printf("乙方的总数值是：%d\n",n);
 	   
-	       if(z==2)
+	       if(s1==2&&s2==2)
 	        {
-			  z=0; 
 	    	  puts("双方都没要牌,开始比分！");
-			  
+			  s1=0;
+			  s2=0; 
 			  break;
 		    } 
 	    }
@@ -157,13 +150,11 @@ int main(void)
 	    }
 	   
 	  printf("你还想再来一局吗？（y再来，n退出):\n"); 
-	
 	  u=miss();
-	  m=n=z=w=0;  
-   }while(u==1); 
+	   
+    }while(u==1); 
 	  printf("游戏结束！谢谢参与\n");
-	
-	  
+
 	  return 0;
  }
 
@@ -186,6 +177,7 @@ void number1(int t,int r)
 	    break;
 		}
 	  }
+    return ; 
 }
 	  
 int number2(int t)
@@ -217,8 +209,8 @@ int miss(void)
 		   }  
 		  if(ch[0]!='\n')
 		  {
-		   if(ch[0]=='q')
-	         printf("Bye\n");
+		    if(ch[0]=='q')
+	          printf("Bye\n");
 	         
 	        if(ch[0]=='y')
 	        {
@@ -243,21 +235,22 @@ int miss(void)
 		   }
 		   
 	    }while(ch[0]!='q'||ch[1]!='\0');
-	   return  w;
+	return  w;
 }
 
 
 void shu(int m)
 {
 	switch(m){
-		case 1:printf("梅花");
+		case 1:printf("黑桃");
 		break;
-		case 2:printf("红桃");
+		case 2:printf("红心");
 		break;
-		case 3:printf("黑桃");
+		case 3:printf("梅花");
 		break;
 		case 4:printf("红方");
 		break; 
 	}
+	return ;
 }
 
