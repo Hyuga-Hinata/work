@@ -66,9 +66,10 @@ int main(void)
       printf("祝你游戏愉快！");
       printf("现在开始游戏(请输入y,n;q退出)\n");
     
-      int m,n;   //总数值 
-	  int r1,r2,w;
-	  int s1,s2;
+      int m,n;   //甲方乙方的总数值 
+	  int r1,r2; //甲乙的每次的牌数 
+	  int w;     //用于删牌 
+	  int s1,s2; //用于判断是否接受牌 
 	  m=n=w=0;
         while(m<=21&&n<=21)
 		{ 
