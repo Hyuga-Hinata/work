@@ -1,17 +1,17 @@
 #include<stdio.h>
 #include<stdlib.h> 
 #include<time.h>
-void shu(int);
-void number1(int,int);
-int number2(int);
-int miss(void);
+void shu(int);         //输出花色 
+void number1(int,int); //输入牌数 
+int number2(int);   //记录数值 
+int miss(void);   //按键判断 
 int main(void)
 {
 	int u;
 	char input;
 	srand((unsigned)time(NULL));
 	
-	printf("请输入你的按键来验证是否按键正常：(q结束验证)\n");
+	printf("请输入你的按键来验证是否按键正常：(q结束验证)\n"); //按键检验开始 
     while(scanf("%c",&input)==1)
     {
     	if(input!='q')
@@ -23,21 +23,21 @@ int main(void)
 		  }
 		continue; 
 	}
-	
+	                             //检验结束 
 	do{
 		
 	  int a[52],b[52],c[52];
 	  int i;
 	  
 	
-	  for(i=0;i<=51;i++)
+	  for(i=0;i<=51;i++)    //b[52]初始值 
 	  {
 		
 		  b[i]=0;
 		
 	  }
 	
-	  for(i=0;i<=51;i++)
+	  for(i=0;i<=51;i++)   //随机a[52]旳值 
 	  {
 		  int f;
 	      do
@@ -45,7 +45,7 @@ int main(void)
 		      f=1;
 			  a[i]=rand()%52+1;
 			  b[a[i]]++;
-			  if(b[a[i]]==2)
+			  if(b[a[i]]==2)   //防止a[52]重复 
 			  {
 				  b[a[i]]=1;
 				  f=0;
@@ -66,7 +66,7 @@ int main(void)
       printf("祝你游戏愉快！");
       printf("现在开始游戏(请输入y,n;q退出)\n");
     
-      int m,n;
+      int m,n;   //总数值 
 	  int r1,r2,w;
 	  int s1,s2;
 	  m=n=w=0;
@@ -87,7 +87,7 @@ int main(void)
 		    r1=number2((a[i]-1)%13+1);
 		    m+=r1;
 		    w++;
-		    for(;i<=(51-w);i++)
+		    for(;i<=(51-w);i++)  //删去打出的牌 
 	  	      {
 	  			  a[i]=a[i+1];
 	  			  c[i]=c[i+1];
@@ -96,7 +96,7 @@ int main(void)
 	       
 	       printf("甲方的总数值是：%d\n",m);
 	       
-	       if(m>21)
+	       if(m>21)   //防止甲方爆牌 
 	       {
 	   	     break;
 	       } 
@@ -117,7 +117,7 @@ int main(void)
 		    r2=number2((a[i]-1)%13+1);
 		    n+=r2;
 		    w++;
-		    for(;i<=(51-w);i++)
+		    for(;i<=(51-w);i++)  //删去打出的牌 
 	  	      {
 	  			  a[i]=a[i+1];
 	  			  c[i]=c[i+1];
@@ -126,7 +126,7 @@ int main(void)
 	       
 	       printf("乙方的总数值是：%d\n",n);
 	   
-	       if(s1==2&&s2==2)
+	       if(s1==2&&s2==2)  //两个n退出 
 	        {
 	    	  puts("双方都没要牌,开始比分！");
 			  s1=0;
@@ -134,7 +134,7 @@ int main(void)
 			  break;
 		    } 
 	    }
-	
+	  //开始判断结果 
 	  if(m>21)
 	   printf("甲爆牌！乙获胜！恭喜！\n"); 
 	  if(n>21)
